@@ -49,7 +49,7 @@ def pack(filename, sources, python="/usr/bin/env python3", main=None):
                 module, function = main.split(':')
                 main_contents = ''.join([ '# __main__ written by pyzaa\n',
                                   'import {0}\n'.format(module),
-                                  '{0}.{1}()'.format(module, function) ]).encode('utf-8')
+                                  '{0}.{1}()\n'.format(module, function) ]).encode('utf-8')
                 zf.writestr("__main__.py", main_contents)
                 
     mode = os.stat(filename).st_mode
